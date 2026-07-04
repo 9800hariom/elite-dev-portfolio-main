@@ -141,22 +141,7 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
                             </div>
                         </div>
 
-                        {/* EmailJS live badge */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.4 }}
-                            className="flex items-center gap-3 p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl"
-                        >
-                            <span className="relative flex h-3 w-3">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-                            </span>
-                            <p className="text-sm text-emerald-400 font-medium">
-                                Emails delivered in real-time via EmailJS — no server needed!
-                            </p>
-                        </motion.div>
+
                     </motion.div>
 
                     {/* ── Right: Contact Form ── */}
@@ -204,17 +189,8 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
                                         transition={{ delay: 0.35 }}
                                         className="text-gray-400 max-w-xs leading-relaxed"
                                     >
-                                        Your message was delivered in real-time via EmailJS. I'll get back to you very soon!
+                                        Your message has been sent! I'll get back to you very soon.
                                     </motion.p>
-                                    <motion.div
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        transition={{ delay: 0.5 }}
-                                        className="mt-6 flex items-center gap-2 text-xs text-emerald-500/70"
-                                    >
-                                        <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                                        Delivered via EmailJS — real time
-                                    </motion.div>
                                 </motion.div>
 
                             ) : (
@@ -303,7 +279,7 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
                                         {status === 'sending' ? (
                                             <>
                                                 <Loader2 size={20} className="animate-spin" />
-                                                Sending in real-time…
+                                                Sending…
                                             </>
                                         ) : (
                                             <>
@@ -313,9 +289,7 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
                                         )}
                                     </motion.button>
 
-                                    <p className="text-center text-xs text-slate-600 pt-1">
-                                        Powered by <span className="text-cyan-700">EmailJS</span> · No server · Real-time delivery
-                                    </p>
+
                                 </motion.form>
                             )}
                         </AnimatePresence>

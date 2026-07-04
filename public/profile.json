@@ -1,0 +1,162 @@
+{
+    "name": "Hariom Yadav",
+    "role": "Full Stack Web Developer",
+    "careerFocus": "Modern Web Architecture & Interactive Design",
+    "aboutMe": "I am a dedicated Full Stack Developer based in Janakpur, Nepal, currently pursuing my Bachelor of Information Technology at Janakpur Community College. My technical journey is fueled by a passion for building responsive, user-friendly applications using React, Tailwind CSS, and Django. I thrive on solving complex challenges and contributing to the tech community.",
+    "email": "980hariom@gmail.com",
+    "phone": "+977-9800813412",
+    "location": "Janakpur, Nepal",
+    "github": "https://github.com/9800hariom",
+    "linkedin": "https://www.linkedin.com/in/hariom-yadav-3106a4333/",
+    "cvUrl": "/Hariom_Yadav_Resume.pdf",
+    "profileImage": "my-copy.jpg",
+    "coreSkills": [
+        {
+            "name": "React",
+            "level": 95
+        },
+        {
+            "name": "Django",
+            "level": 88
+        },
+        {
+            "name": "TypeScript",
+            "level": 85
+        },
+        {
+            "name": "Tailwind",
+            "level": 98
+        },
+        {
+            "name": "MySQL",
+            "level": 82
+        },
+        {
+            "name": "Figma",
+            "level": 75
+        }
+    ],
+    "skills": [
+        {
+            "category": "Front-End",
+            "skills": [
+                "React",
+                "HTML5",
+                "CSS3",
+                "JavaScript",
+                "Tailwind CSS",
+                "Framer Motion"
+            ]
+        },
+        {
+            "category": "Back-End & DB",
+            "skills": [
+                "Django",
+                "Python",
+                "MySQL",
+                "PostgreSQL",
+                "REST APIs"
+            ]
+        },
+        {
+            "category": "Design & Tools",
+            "skills": [
+                "Figma",
+                "Photoshop",
+                "VS Code",
+                "GitHub",
+                "Vercel"
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "title": "Foodmandu Clone",
+            "description": "A comprehensive, responsive clone of the popular Foodmandu website, focusing on UI/UX and seamless navigation.",
+            "technologies": [
+                "React",
+                "Tailwind CSS",
+                "JavaScript"
+            ],
+            "githubUrl": "https://github.com/9800hariom/Food_mandu-Clone",
+            "liveUrl": "https://food-mandu-clone.vercel.app/",
+            "imageUrl": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop"
+        },
+        {
+            "title": "Country Details Finder",
+            "description": "An interactive tool to fetch and display real-time specific information for any country around the globe.",
+            "technologies": [
+                "React",
+                "Fetch API",
+                "Tailwind CSS"
+            ],
+            "githubUrl": "https://github.com/9800hariom/Countries-Finder",
+            "liveUrl": "https://rest-countries-main-xi.vercel.app/",
+            "imageUrl": "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=800&auto=format&fit=crop"
+        },
+        {
+            "title": "GitHub User Finder",
+            "description": "A clean search application that allows users to find and display detailed profiles of any GitHub developer.",
+            "technologies": [
+                "React",
+                "GitHub API",
+                "CSS"
+            ],
+            "githubUrl": "https://github.com/9800hariom/gitsearchh",
+            "liveUrl": "https://gitsearchuserfriend.vercel.app/",
+            "imageUrl": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=800&auto=format&fit=crop"
+        }
+    ],
+    "experience": [
+        {
+            "company": "Janakpur Tech Bootcamp",
+            "role": "Full Stack Development Trainee",
+            "period": "2023 - 2024",
+            "description": [
+                "Mastered Full Stack development focusing on React and Django.",
+                "Implemented robust backend services and modern UI designs."
+            ],
+            "type": "Training"
+        }
+    ],
+    "education": [
+        {
+            "institution": "Janakpur Community College",
+            "degree": "Bachelor of Information Technology",
+            "period": "2023 - Ongoing",
+            "semester": "Current Student",
+            "details": "Focusing on web architecture and computer science fundamentals."
+        },
+        {
+            "institution": "Mithila Institute of Technology and Management (MIT)",
+            "degree": "Management",
+            "period": "2 years - completed",
+            "semester": "Completed",
+            "details": "Completed management studies with a focus on web development and digital marketing."
+        }
+    ],
+    "certifications": [
+        "Janakpur Tech Bootcamp Graduate",
+        "Hackathon Excellence Recognition (2024)"
+    ],
+    "testimonials": [
+        {
+            "quote": "Working with my clients has been a fantastic experience. Their expertise in web development and dedication to delivering top-notch websites have consistently exceeded our expectations. We couldn't be happier with the results!",
+            "author": "Yuvraj Singh",
+            "role": "React Instructor (BootCamp)",
+            "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop"
+        },
+        {
+            "quote": "Working with Ajay sah completed our website project on time and with exceptional quality. Their professionalism and attention to detail ensured that the final product exceeded our expectations. Highly recommend for any web development needs!",
+            "author": "Ajay Sha",
+            "role": "Project Manager",
+            "avatarUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop"
+        },
+        {
+            "quote": "Amer Deep Soni delivers excellence in every line of code. Dependable, innovative, and a key player in project success. Outstanding performance.",
+            "author": "Amer Deep Soni",
+            "role": "Civil Engineer",
+            "avatarUrl": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=200&auto=format&fit=crop"
+        }
+    ]
+}

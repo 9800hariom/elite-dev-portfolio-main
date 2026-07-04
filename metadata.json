@@ -1,0 +1,12 @@
+{
+  "name": "Elite Dev Portfolio",
+  "description": "A world-class, professional portfolio template with integrated Gemini AI assistant to answer questions about the developer's career and skills.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
+
+
+
+
+

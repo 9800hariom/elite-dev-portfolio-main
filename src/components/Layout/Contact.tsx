@@ -13,9 +13,9 @@ import {
 // 🔑 YOUR EMAILJS CREDENTIALS — fill these in!
 // Go to https://www.emailjs.com → Dashboard to get them
 // =====================================================
-const EMAILJS_SERVICE_ID = "service_d7btni5";   // e.g. "service_abc123"
-const EMAILJS_TEMPLATE_ID = "template_r3j37ef";  // e.g. "template_xyz789"
-const EMAILJS_PUBLIC_KEY = "MTto61FSEqHlEkPGm";   // e.g. "abcDEFghiJKLmno"
+const EMAILJS_SERVICE_ID = "service_0009qb7";   // e.g. "service_abc123"
+const EMAILJS_TEMPLATE_ID = "template_i9b2u01";  // e.g. "template_xyz789"
+const EMAILJS_PUBLIC_KEY = "QskeBQBvyf4ddXZ-L";   // e.g. "abcDEFghiJKLmno"
 // =====================================================
 
 type SendStatus = 'idle' | 'sending' | 'success' | 'error';

@@ -1,18 +1,73 @@
+/* ================================================================
+   PORTFOLIO GLOBAL STYLES
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ── CSS Theme Tokens ──────────────────────────────────────────── */
+:root {
+    /* Dark (default) */
+    --bg-base:        #030712;
+    --bg-section-alt: rgba(15, 23, 42, 0.50);
+    --bg-card:        rgba(30, 41, 59, 0.40);
+    --bg-card-solid:  #0f172a;
+    --bg-input:       rgba(2, 6, 23, 0.80);
+    --bg-nav:         rgba(3, 7, 18, 0.80);
+    --text-primary:   #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted:     #64748b;
+    --border:         rgba(51, 65, 85, 0.50);
+    --border-hover:   rgba(6, 182, 212, 0.40);
+    --accent:         #06b6d4;
+    --accent-2:       #3b82f6;
+    --shadow-glow:    rgba(6, 182, 212, 0.15);
+    --glass-bg:       rgba(17, 24, 39, 0.70);
+    --glass-border:   rgba(255, 255, 255, 0.05);
+    --footer-bg:      #030712;
+    --footer-border:  #0f172a;
+}
+
+/* ── Light Mode Token Override ─────────────────────────────────── */
+html[data-theme="light"] {
+    --bg-base:        #f1f5f9;
+    --bg-section-alt: rgba(226, 232, 240, 0.60);
+    --bg-card:        rgba(255, 255, 255, 0.80);
+    --bg-card-solid:  #ffffff;
+    --bg-input:       rgba(255, 255, 255, 0.95);
+    --bg-nav:         rgba(248, 250, 252, 0.90);
+    --text-primary:   #0f172a;
+    --text-secondary: #475569;
+    --text-muted:     #64748b;
+    --border:         rgba(203, 213, 225, 0.80);
+    --border-hover:   rgba(6, 182, 212, 0.50);
+    --accent:         #0891b2;
+    --accent-2:       #2563eb;
+    --shadow-glow:    rgba(8, 145, 178, 0.12);
+    --glass-bg:       rgba(255, 255, 255, 0.70);
+    --glass-border:   rgba(203, 213, 225, 0.60);
+    --footer-bg:      #e2e8f0;
+    --footer-border:  #cbd5e1;
+}
+
+/* ── Base Styles ───────────────────────────────────────────────── */
 @layer base {
     body {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        background-color: #030712;
-        color: #f8fafc;
+        background-color: var(--bg-base);
+        color: var(--text-primary);
         overflow-x: hidden;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 }
 
+/* ── Utility Classes ───────────────────────────────────────────── */
 @layer components {
     .glass {
-        background: rgba(17, 24, 39, 0.7);
+        background: var(--glass-bg);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--glass-border);
+        transition: background 0.4s ease, border-color 0.4s ease;
     }
 
     .gradient-text {
@@ -23,42 +78,144 @@
     }
 
     .glow {
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+        box-shadow: 0 0 20px var(--shadow-glow);
     }
 
-    .scrollbar-hide::-webkit-scrollbar {
-        display: none;
-    }
-
-    .scrollbar-hide {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 }
 
+/* ── Light Mode: Structural Overrides ──────────────────────────── */
+
+/* Background surfaces */
+html[data-theme="light"] body,
+html[data-theme="light"] #root {
+    background-color: var(--bg-base);
+}
+
+/* Remove dark Tailwind bg classes in light mode */
+html[data-theme="light"] .bg-slate-950 {
+    background-color: var(--bg-base) !important;
+}
+html[data-theme="light"] .bg-slate-900\/50,
+html[data-theme="light"] [class*="bg-slate-900"] {
+    background-color: var(--bg-section-alt) !important;
+}
+html[data-theme="light"] .bg-slate-800\/40,
+html[data-theme="light"] .bg-slate-800\/30,
+html[data-theme="light"] [class*="bg-slate-800"] {
+    background-color: var(--bg-card) !important;
+}
+html[data-theme="light"] .bg-slate-900\/80,
+html[data-theme="light"] .bg-slate-900\/90 {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Text overrides */
+html[data-theme="light"] .text-white {
+    color: var(--text-primary) !important;
+}
+html[data-theme="light"] .text-slate-200 {
+    color: var(--text-primary) !important;
+}
+html[data-theme="light"] .text-gray-400 {
+    color: var(--text-secondary) !important;
+}
+html[data-theme="light"] .text-gray-500 {
+    color: var(--text-muted) !important;
+}
+html[data-theme="light"] .text-gray-600 {
+    color: #64748b !important;
+}
+html[data-theme="light"] .placeholder-slate-600::placeholder {
+    color: #94a3b8 !important;
+}
+html[data-theme="light"] .placeholder-gray-600::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* Border overrides */
+html[data-theme="light"] [class*="border-slate-700"],
+html[data-theme="light"] [class*="border-slate-800"],
+html[data-theme="light"] [class*="border-slate-900"] {
+    border-color: var(--border) !important;
+}
+
+/* Navbar glass in light mode */
+html[data-theme="light"] header.bg-slate-950\/80,
+html[data-theme="light"] [class*="bg-slate-950"] {
+    background-color: rgba(248, 250, 252, 0.92) !important;
+    border-color: rgba(203, 213, 225, 0.8) !important;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06) !important;
+}
+
+/* Input fields in light mode */
+html[data-theme="light"] input,
+html[data-theme="light"] textarea {
+    background-color: var(--bg-input) !important;
+    color: var(--text-primary) !important;
+    border-color: rgba(203, 213, 225, 0.8) !important;
+}
+html[data-theme="light"] input::placeholder,
+html[data-theme="light"] textarea::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* Footer in light mode */
+html[data-theme="light"] footer {
+    background-color: var(--footer-bg) !important;
+    border-top-color: var(--footer-border) !important;
+}
+html[data-theme="light"] footer .border-slate-900 {
+    border-color: var(--footer-border) !important;
+}
+html[data-theme="light"] footer .text-gray-500,
+html[data-theme="light"] footer .text-gray-600 {
+    color: #64748b !important;
+}
+
+/* Floating cards in hero */
+html[data-theme="light"] .backdrop-blur-md {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* Transition everything smoothly */
+html[data-theme="light"] *,
+html[data-theme="dark"] * {
+    transition-property: background-color, border-color, color;
+    transition-duration: 0.35s;
+    transition-timing-function: ease;
+}
+/* Exclude animations from the transition override */
+html[data-theme="light"] .animate-spin,
+html[data-theme="light"] .animate-ping,
+html[data-theme="light"] .animate-pulse,
+html[data-theme="dark"] .animate-spin,
+html[data-theme="dark"] .animate-ping,
+html[data-theme="dark"] .animate-pulse {
+    transition: none;
+}
+
+/* ── Animations ────────────────────────────────────────────────── */
 @keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }
+.animate-float { animation: float 4s ease-in-out infinite; }
 
-.animate-float {
-    animation: float 4s ease-in-out infinite;
+/* ── Section & Container Helpers ───────────────────────────────── */
+.section-padding  { @apply py-24; }
+.container-custom { @apply container mx-auto px-6; }
+
+/* ── Language Fade Transition ──────────────────────────────────── */
+.lang-fade-enter {
+    opacity: 0;
+    transform: translateY(4px);
 }
-
-/* Custom styles for the portfolio */
-.section-padding {
-    @apply py-24;
-}
-
-.container-custom {
-    @apply container mx-auto px-6;
+.lang-fade-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }

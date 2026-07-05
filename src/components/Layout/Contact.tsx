@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { SectionTitle } from '../Common/CommonComponents';
 import { ProfileData } from '../../types/portfolio';
+import { useLanguage } from '../../contexts/LanguageContext';
 import {
     Mail, Phone, MapPin, Send, Github, Linkedin,
     CheckCircle, AlertCircle, Loader2
@@ -24,6 +25,7 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
     const formRef = useRef<HTMLFormElement>(null);
     const [status, setStatus]   = useState<SendStatus>('idle');
     const [errorMsg, setErrorMsg] = useState('');
+    const { t } = useLanguage();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -36,7 +38,7 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
 
         if (!name || !email || !message) {
             setStatus('error');
-            setErrorMsg('Please fill in all required fields.');
+            setErrorMsg(t('contact.fillRequired'));
             return;
         }
 
@@ -90,8 +92,8 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
 
             <div className="container mx-auto px-6 relative z-10">
                 <SectionTitle
-                    title="Get In Touch"
-                    subtitle="Let's discuss your next project or just say hello!"
+                    title={t('contact.title')}
+                    subtitle={t('contact.subtitle')}
                 />
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -105,31 +107,33 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
                         className="space-y-8"
                     >
                         <div>
-                            <h3 className="text-3xl font-bold text-white mb-4">Contact Information</h3>
-                            <p className="text-gray-400 text-lg max-w-md leading-relaxed">
-                                Feel free to reach out through any of these channels. I'm always open to discussing new opportunities.
+                            <h3 className="text-3xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>{t('contact.infoTitle')}</h3>
+                            <p className="text-lg max-w-md leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                                {t('contact.infoDesc')}
                             </p>
                         </div>
 
                         <div className="space-y-4">
                             {[
-                                { icon: Mail,   label: "Email",    value: profile.email,    href: `mailto:${profile.email}` },
-                                { icon: Phone,  label: "Phone",    value: profile.phone,    href: `tel:${profile.phone}` },
-                                { icon: MapPin, label: "Location", value: profile.location, href: "#" }
+                                { icon: Mail,   label: t('contact.emailLabel'),    value: profile.email,    href: `mailto:${profile.email}` },
+                                { icon: Phone,  label: t('contact.phoneLabel'),    value: profile.phone,    href: `tel:${profile.phone}` },
+                                { icon: MapPin, label: t('contact.locationLabel'), value: profile.location, href: '#' }
                             ].map((item, i) => (
                                 <motion.a
                                     key={i}
                                     href={item.href}
                                     whileHover={{ scale: 1.02, x: 4 }}
                                     transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-                                    className="flex items-center gap-5 p-5 bg-slate-800/30 border border-slate-700/50 rounded-2xl hover:border-cyan-500/40 hover:bg-slate-800/60 transition-colors group"
+                                    className="flex items-center gap-5 p-5 rounded-2xl border hover:border-cyan-500/40 transition-colors group"
+                                    style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
                                 >
-                                    <div className="w-[52px] h-[52px] min-w-[52px] min-h-[52px] bg-slate-900 rounded-xl flex items-center justify-center text-cyan-400 border border-slate-700 group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-500 transition-all duration-300 shadow-lg">
+                                    <div className="w-[52px] h-[52px] min-w-[52px] min-h-[52px] rounded-xl flex items-center justify-center text-cyan-400 border group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-500 transition-all duration-300 shadow-lg"
+                                        style={{ backgroundColor: 'var(--bg-base)', borderColor: 'var(--border)' }}>
                                         <item.icon size={22} />
                                     </div>
                                     <div>
-                                        <div className="text-xs text-gray-500 uppercase tracking-widest mb-1">{item.label}</div>
-                                        <div className="text-base font-semibold text-white">{item.value}</div>
+                                        <div className="text-xs uppercase tracking-widest mb-1" style={{ color: 'var(--text-muted)' }}>{item.label}</div>
+                                        <div className="text-base font-semibold" style={{ color: 'var(--text-primary)' }}>{item.value}</div>
                                     </div>
                                 </motion.a>
                             ))}
@@ -137,7 +141,7 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
 
                         {/* Social Links */}
                         <div className="pt-4">
-                            <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-widest text-gray-400">Social Connect</h4>
+                            <h4 className="font-semibold mb-4 text-sm uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>{t('contact.socialConnect')}</h4>
                             <div className="flex gap-3">
                                 {[
                                     { icon: Github,   href: profile.github,   label: "GitHub" },
@@ -167,7 +171,8 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="p-8 md:p-10 bg-slate-800/30 border border-slate-700/50 rounded-[2rem] backdrop-blur-sm relative overflow-hidden"
+                        className="p-8 md:p-10 rounded-[2rem] backdrop-blur-sm relative overflow-hidden border"
+                        style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
                     >
                         {/* Decorative inner glow */}
                         <div className="absolute top-0 right-0 w-48 h-48 bg-cyan-500/5 rounded-full blur-[60px] pointer-events-none" />
@@ -196,17 +201,19 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.25 }}
-                                        className="text-2xl font-bold text-white mb-3"
+                                        className="text-2xl font-bold mb-3"
+                                        style={{ color: 'var(--text-primary)' }}
                                     >
-                                        Message Sent! 🎉
+                                        {t('contact.success')}
                                     </motion.h3>
                                     <motion.p
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.35 }}
-                                        className="text-gray-400 max-w-xs leading-relaxed"
+                                        style={{ color: 'var(--text-secondary)' }}
+                                        className="max-w-xs leading-relaxed"
                                     >
-                                        Your message has been sent! I'll get back to you very soon.
+                                        {t('contact.successMsg')}
                                     </motion.p>
                                 </motion.div>
 
@@ -223,49 +230,53 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
                                 >
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                         <div className="space-y-1.5">
-                                            <label className="text-xs text-gray-400 pl-1 uppercase tracking-wider">Full Name *</label>
+                                            <label className="text-xs pl-1 uppercase tracking-wider" style={{ color: 'var(--text-secondary)' }}>{t('contact.labelName')}</label>
                                             <input
                                                 type="text"
                                                 name="user_name"
-                                                placeholder="John Doe"
+                                                placeholder={t('contact.placeholderName')}
                                                 required
                                                 disabled={status === 'sending'}
-                                                className="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-all disabled:opacity-50"
+                                                className="w-full rounded-xl px-4 py-3.5 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-all disabled:opacity-50 border"
+                                                style={{ backgroundColor: 'var(--bg-input)', color: 'var(--text-primary)', borderColor: 'var(--border)' }}
                                             />
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="text-xs text-gray-400 pl-1 uppercase tracking-wider">Email Address *</label>
+                                            <label className="text-xs pl-1 uppercase tracking-wider" style={{ color: 'var(--text-secondary)' }}>{t('contact.labelEmail')}</label>
                                             <input
                                                 type="email"
                                                 name="user_email"
-                                                placeholder="john@example.com"
+                                                placeholder={t('contact.placeholderEmail')}
                                                 required
                                                 disabled={status === 'sending'}
-                                                className="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-all disabled:opacity-50"
+                                                className="w-full rounded-xl px-4 py-3.5 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-all disabled:opacity-50 border"
+                                                style={{ backgroundColor: 'var(--bg-input)', color: 'var(--text-primary)', borderColor: 'var(--border)' }}
                                             />
                                         </div>
                                     </div>
 
                                     <div className="space-y-1.5">
-                                        <label className="text-xs text-gray-400 pl-1 uppercase tracking-wider">Subject</label>
+                                        <label className="text-xs pl-1 uppercase tracking-wider" style={{ color: 'var(--text-secondary)' }}>{t('contact.labelSubject')}</label>
                                         <input
                                             type="text"
                                             name="subject"
-                                            placeholder="Inquiry about a project"
+                                            placeholder={t('contact.placeholderSubject')}
                                             disabled={status === 'sending'}
-                                            className="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-all disabled:opacity-50"
+                                            className="w-full rounded-xl px-4 py-3.5 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-all disabled:opacity-50 border"
+                                            style={{ backgroundColor: 'var(--bg-input)', color: 'var(--text-primary)', borderColor: 'var(--border)' }}
                                         />
                                     </div>
 
                                     <div className="space-y-1.5">
-                                        <label className="text-xs text-gray-400 pl-1 uppercase tracking-wider">Message *</label>
+                                        <label className="text-xs pl-1 uppercase tracking-wider" style={{ color: 'var(--text-secondary)' }}>{t('contact.labelMessage')}</label>
                                         <textarea
                                             rows={5}
                                             name="message"
-                                            placeholder="Hi Hariom, I'd like to talk about..."
+                                            placeholder={t('contact.placeholderMessage')}
                                             required
                                             disabled={status === 'sending'}
-                                            className="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-all resize-none disabled:opacity-50"
+                                            className="w-full rounded-xl px-4 py-3.5 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-all resize-none disabled:opacity-50 border"
+                                            style={{ backgroundColor: 'var(--bg-input)', color: 'var(--text-primary)', borderColor: 'var(--border)' }}
                                         />
                                     </div>
 
@@ -296,12 +307,12 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
                                         {status === 'sending' ? (
                                             <>
                                                 <Loader2 size={20} className="animate-spin" />
-                                                Sending…
+                                                {t('contact.sending')}
                                             </>
                                         ) : (
                                             <>
                                                 <Send size={20} />
-                                                Send Message
+                                                {t('contact.send')}
                                             </>
                                         )}
                                     </motion.button>

@@ -3,21 +3,24 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { SectionTitle } from '../Common/CommonComponents';
 import { ProfileData } from '../../types/portfolio';
-import { Code2, Server, Layout, Database, Figma as FigmaIcon, Cpu } from 'lucide-react';
+import { Code2, Server, Figma as FigmaIcon } from 'lucide-react';
+import { useLanguage } from '../../contexts/LanguageContext';
 
-const categoryIcons: { [key: string]: any } = {
-    "Front-End": Layout,
-    "Back-End & DB": Server,
-    "Design & Tools": FigmaIcon,
+const categoryIcons: { [key: string]: React.ComponentType<{ size?: number }> } = {
+    'Front-End': Code2,
+    'Back-End & DB': Server,
+    'Design & Tools': FigmaIcon,
 };
 
 export const Skills = ({ profile }: { profile: ProfileData }) => {
+    const { t } = useLanguage();
+
     return (
         <section id="skills" className="py-24 relative overflow-hidden">
             <div className="container mx-auto px-6">
                 <SectionTitle
-                    title="Skills & Expertise"
-                    subtitle="My technical toolkit for building modern web applications."
+                    title={t('skills.title')}
+                    subtitle={t('skills.subtitle')}
                 />
 
                 {/* Core Skills Progress */}
@@ -28,13 +31,14 @@ export const Skills = ({ profile }: { profile: ProfileData }) => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.1 }}
-                            className="p-6 bg-slate-800/40 rounded-2xl border border-slate-700/50 hover:border-cyan-500/30 transition-all"
+                            className="p-6 rounded-2xl border hover:border-cyan-500/30 transition-all"
+                            style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
                         >
                             <div className="flex justify-between items-center mb-4">
-                                <span className="text-white font-bold">{skill.name}</span>
+                                <span className="font-bold" style={{ color: 'var(--text-primary)' }}>{skill.name}</span>
                                 <span className="text-cyan-400 text-sm">{skill.level}%</span>
                             </div>
-                            <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+                            <div className="h-2 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--border)' }}>
                                 <motion.div
                                     initial={{ width: 0 }}
                                     whileInView={{ width: `${skill.level}%` }}
@@ -61,13 +65,17 @@ export const Skills = ({ profile }: { profile: ProfileData }) => {
                                 <div className="absolute top-0 left-6 w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-cyan-500/20 z-10 group-hover:rotate-12 transition-transform">
                                     <Icon size={24} />
                                 </div>
-                                <div className="bg-slate-800/30 border border-slate-700/50 rounded-3xl p-8 pt-10 hover:bg-slate-800/50 transition-colors">
-                                    <h4 className="text-xl font-bold text-white mb-6 pl-2">{group.category}</h4>
+                                <div
+                                    className="rounded-3xl p-8 pt-10 hover:opacity-90 transition-colors border"
+                                    style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
+                                >
+                                    <h4 className="text-xl font-bold mb-6 pl-2" style={{ color: 'var(--text-primary)' }}>{group.category}</h4>
                                     <div className="flex flex-wrap gap-2">
                                         {group.skills.map((skill, j) => (
                                             <span
                                                 key={j}
-                                                className="px-4 py-1.5 bg-slate-900 text-gray-400 text-sm rounded-lg border border-slate-700 group-hover:border-cyan-500/30 group-hover:text-cyan-400 transition-colors"
+                                                className="px-4 py-1.5 text-sm rounded-lg border group-hover:border-cyan-500/30 group-hover:text-cyan-400 transition-colors"
+                                                style={{ color: 'var(--text-secondary)', borderColor: 'var(--border)', backgroundColor: 'var(--bg-base)' }}
                                             >
                                                 {skill}
                                             </span>

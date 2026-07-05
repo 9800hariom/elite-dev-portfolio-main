@@ -5,8 +5,11 @@ import { Github, Linkedin, Mail, ChevronRight } from 'lucide-react';
 import { Typewriter } from '../Common/Effects';
 import { ResumeButton } from '../Common/CommonComponents';
 import { ProfileData } from '../../types/portfolio';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export const Hero = ({ profile }: { profile: ProfileData }) => {
+    const { t } = useLanguage();
+
     return (
         <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
             {/* Background Decorative Elements */}
@@ -21,6 +24,7 @@ export const Hero = ({ profile }: { profile: ProfileData }) => {
                         transition={{ duration: 0.8 }}
                         className="flex-1 text-center lg:text-left"
                     >
+                        {/* Available badge */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -28,49 +32,56 @@ export const Hero = ({ profile }: { profile: ProfileData }) => {
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-medium mb-6"
                         >
                             <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500" />
                             </span>
-                            Available for New Projects
+                            {t('hero.available')}
                         </motion.div>
 
-                        <h1 className="text-5xl lg:text-7xl font-bold mb-6">
-                            Hi, I'm <span className="gradient-text">{profile.name}</span>
+                        <h1 className="text-5xl lg:text-7xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
+                            {t('hero.greeting')} <span className="gradient-text">{profile.name}</span>
                         </h1>
 
-                        <div className="text-2xl lg:text-3xl text-gray-400 mb-8 h-12">
+                        <div className="text-2xl lg:text-3xl mb-8 h-12" style={{ color: 'var(--text-secondary)' }}>
                             A <Typewriter />
                         </div>
 
-                        <p className="text-gray-400 text-lg mb-10 max-w-2xl leading-relaxed">
-                            {profile.careerFocus}. Specializing in building digital experiences
-                            that blend technical excellence with stunning design.
+                        <p className="text-lg mb-10 max-w-2xl leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                            {profile.careerFocus}. {t('hero.tagline')}
                         </p>
 
                         <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
                             <ResumeButton variant="primary" />
                             <a
                                 href="#projects"
-                                className="flex items-center gap-2 text-gray-300 hover:text-white px-6 py-3 transition-colors group"
+                                className="flex items-center gap-2 px-6 py-3 transition-colors group"
+                                style={{ color: 'var(--text-secondary)' }}
                             >
-                                View Projects
+                                {t('hero.viewProjects')}
                                 <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
                             </a>
                         </div>
 
+                        {/* Social Links */}
                         <div className="mt-12 flex items-center justify-center lg:justify-start gap-6">
                             {[
-                                { icon: Github, href: profile.github },
-                                { icon: Linkedin, href: profile.linkedin },
-                                { icon: Mail, href: `mailto:${profile.email}` }
-                            ].map((social, i) => (
+                                { icon: Github, href: profile.github, label: 'GitHub' },
+                                { icon: Linkedin, href: profile.linkedin, label: 'LinkedIn' },
+                                { icon: Mail, href: `mailto:${profile.email}`, label: 'Email' },
+                            ].map((social) => (
                                 <motion.a
-                                    key={i}
+                                    key={social.label}
                                     href={social.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     whileHover={{ y: -3 }}
-                                    className="p-3 bg-slate-800/50 hover:bg-slate-700/50 rounded-xl text-gray-400 hover:text-cyan-400 border border-slate-700 transition-all"
+                                    className="p-3 rounded-xl border transition-all"
+                                    style={{
+                                        backgroundColor: 'var(--bg-card)',
+                                        borderColor: 'var(--border)',
+                                        color: 'var(--text-secondary)',
+                                    }}
+                                    aria-label={social.label}
                                 >
                                     <social.icon size={22} />
                                 </motion.a>
@@ -78,6 +89,7 @@ export const Hero = ({ profile }: { profile: ProfileData }) => {
                         </div>
                     </motion.div>
 
+                    {/* Profile Image */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -86,7 +98,10 @@ export const Hero = ({ profile }: { profile: ProfileData }) => {
                     >
                         <div className="relative w-72 h-72 lg:w-96 lg:h-96 mx-auto">
                             <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-3xl rotate-6 blur-2xl opacity-20 animate-pulse" />
-                            <div className="relative w-full h-full rounded-3xl overflow-hidden border-2 border-slate-700 bg-slate-800 group">
+                            <div
+                                className="relative w-full h-full rounded-3xl overflow-hidden border-2 group"
+                                style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-card)' }}
+                            >
                                 <img
                                     src={profile.profileImage}
                                     alt={profile.name}
@@ -95,23 +110,25 @@ export const Hero = ({ profile }: { profile: ProfileData }) => {
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60" />
                             </div>
 
-                            {/* Stats/Floating Cards */}
+                            {/* Floating Stats Cards */}
                             <motion.div
                                 animate={{ y: [0, -10, 0] }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute -right-8 top-1/4 p-4 bg-slate-900/90 backdrop-blur-md border border-slate-700 rounded-2xl shadow-xl hidden md:block"
+                                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                                className="absolute -right-8 top-1/4 p-4 backdrop-blur-md border rounded-2xl shadow-xl hidden md:block"
+                                style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
                             >
                                 <div className="text-cyan-400 font-bold text-xl">2+</div>
-                                <div className="text-gray-400 text-xs uppercase tracking-wider">Years Exp.</div>
+                                <div className="text-xs uppercase tracking-wider" style={{ color: 'var(--text-secondary)' }}>{t('hero.yearsExp')}</div>
                             </motion.div>
 
                             <motion.div
                                 animate={{ y: [0, 10, 0] }}
-                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                className="absolute -left-8 bottom-1/4 p-4 bg-slate-900/90 backdrop-blur-md border border-slate-700 rounded-2xl shadow-xl hidden md:block"
+                                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                                className="absolute -left-8 bottom-1/4 p-4 backdrop-blur-md border rounded-2xl shadow-xl hidden md:block"
+                                style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
                             >
                                 <div className="text-blue-400 font-bold text-xl">15+</div>
-                                <div className="text-gray-400 text-xs uppercase tracking-wider">Projects</div>
+                                <div className="text-xs uppercase tracking-wider" style={{ color: 'var(--text-secondary)' }}>{t('hero.projects')}</div>
                             </motion.div>
                         </div>
                     </motion.div>

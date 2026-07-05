@@ -3,7 +3,7 @@
     "role": "Full Stack Web Developer",
     "careerFocus": "Modern Web Architecture & Interactive Design",
     "aboutMe": "I am a dedicated Full Stack Developer based in Janakpur, Nepal, currently pursuing my Bachelor of Information Technology at Janakpur Community College. My technical journey is fueled by a passion for building responsive, user-friendly applications using React, Tailwind CSS, and Django. I thrive on solving complex challenges and contributing to the tech community.",
-    "email": "980hariom@gmail.com ",
+    "email": [ "980hariom@gmail.com","  yadavhariom12345678989@gmail.com"],
     "phone": "+977-9800813412",
     "location": "Janakpur, Nepal",
     "github": "https://github.com/9800hariom",

@@ -14,7 +14,7 @@ import {
 // Go to https://www.emailjs.com → Dashboard to get them
 // =====================================================
 const EMAILJS_SERVICE_ID = "service_0009qb7";   // e.g. "service_abc123"
-const EMAILJS_TEMPLATE_ID = "template_i9b2u01";  // e.g. "template_xyz789"
+const EMAILJS_TEMPLATE_ID = "template_v9tssur";  // e.g. "template_xyz789"
 const EMAILJS_PUBLIC_KEY = "QskeBQBvyf4ddXZ-L";   // e.g. "abcDEFghiJKLmno"
 // =====================================================
 
@@ -41,7 +41,7 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
         }
 
         setStatus('sending');
-        setErrorMsg('');
+        setErrorMsg(''); // clear any previous error on new send attempt
 
         try {
             await emailjs.sendForm(
@@ -56,9 +56,26 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
             setTimeout(() => setStatus('idle'), 6000);
         } catch (err: unknown) {
             setStatus('error');
-            const msg = err instanceof Error ? err.message : String(err);
+
+            // EmailJS rejects with a plain object: { status: number, text: string }
+            // so `err instanceof Error` is false and String(err) gives "[object Object]"
+            let msg = 'Unknown error. Please try again.';
+            if (err instanceof Error) {
+                msg = err.message;
+            } else if (
+                err !== null &&
+                typeof err === 'object' &&
+                'text' in err &&
+                typeof (err as Record<string, unknown>).text === 'string'
+            ) {
+                // EmailJS error shape: { status: number, text: string }
+                msg = (err as { text: string }).text;
+            } else if (typeof err === 'string') {
+                msg = err;
+            }
+
             setErrorMsg(
-                msg.toLowerCase().includes('service_id') || msg.includes('Invalid')
+                msg.toLowerCase().includes('service_id') || msg.toLowerCase().includes('invalid')
                     ? '⚠️ EmailJS credentials not set. Please add your Service ID, Template ID & Public Key.'
                     : `Failed to send: ${msg}`
             );
@@ -107,7 +124,7 @@ export const Contact = ({ profile }: { profile: ProfileData }) => {
                                     transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                                     className="flex items-center gap-5 p-5 bg-slate-800/30 border border-slate-700/50 rounded-2xl hover:border-cyan-500/40 hover:bg-slate-800/60 transition-colors group"
                                 >
-                                    <div className="w-13 h-13 min-w-[52px] min-h-[52px] bg-slate-900 rounded-xl flex items-center justify-center text-cyan-400 border border-slate-700 group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-500 transition-all duration-300 shadow-lg">
+                                    <div className="w-[52px] h-[52px] min-w-[52px] min-h-[52px] bg-slate-900 rounded-xl flex items-center justify-center text-cyan-400 border border-slate-700 group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-500 transition-all duration-300 shadow-lg">
                                         <item.icon size={22} />
                                     </div>
                                     <div>

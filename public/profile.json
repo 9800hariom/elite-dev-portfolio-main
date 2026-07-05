@@ -3,7 +3,7 @@
     "role": "Full Stack Web Developer",
     "careerFocus": "Modern Web Architecture & Interactive Design",
     "aboutMe": "I am a dedicated Full Stack Developer based in Janakpur, Nepal, currently pursuing my Bachelor of Information Technology at Janakpur Community College. My technical journey is fueled by a passion for building responsive, user-friendly applications using React, Tailwind CSS, and Django. I thrive on solving complex challenges and contributing to the tech community.",
-    "email": "980hariom@gmail.com",
+    "email": "980hariom@gmail.com ",
     "phone": "+977-9800813412",
     "location": "Janakpur, Nepal",
     "github": "https://github.com/9800hariom",
@@ -13,19 +13,19 @@
     "coreSkills": [
         {
             "name": "React",
-            "level": 95
+            "level": 55
         },
         {
             "name": "Django",
-            "level": 88
+            "level": 58
         },
         {
             "name": "TypeScript",
-            "level": 85
+            "level": 55
         },
         {
             "name": "Tailwind",
-            "level": 98
+            "level": 78
         },
         {
             "name": "MySQL",
@@ -105,6 +105,29 @@
             "githubUrl": "https://github.com/9800hariom/gitsearchh",
             "liveUrl": "https://gitsearchuserfriend.vercel.app/",
             "imageUrl": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=800&auto=format&fit=crop"
+        },
+        {
+            "title": "MyShop Pro - Full Stack E-Commerce System",
+            "description":" A full-stack e-commerce application featuring user authentication, product browsing, shopping cart, checkout, and an admin dashboard with sales analytics.",
+            "technologies": [
+                "HTML5",
+                "CSS3",
+                "JavaScript",
+                "PHP",
+                "MySQL"
+            ],
+            "features": [
+                "User Registration & Login",
+                "Product Browsing & Search",
+                "Shopping Cart System",
+                "Checkout System",
+                "Admin Dashboard",
+                "Sales Analytics",
+                "Mobile Responsive Design"
+            ],
+            "githubUrl": "https://github.com/9800hariom/MyShop",
+            "liveUrl": "https://YOUR-LIVE-DEMO-LINK.com",
+            "imageUrl": "public/assets/myimage.png"
         }
     ],
     "experience": [
@@ -149,13 +172,13 @@
         {
             "quote": "Working with Ajay sah completed our website project on time and with exceptional quality. Their professionalism and attention to detail ensured that the final product exceeded our expectations. Highly recommend for any web development needs!",
             "author": "Ajay Sha",
-            "role": "Project Manager",
+            "role": "collage instructer",
             "avatarUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop"
         },
         {
             "quote": "Amer Deep Soni delivers excellence in every line of code. Dependable, innovative, and a key player in project success. Outstanding performance.",
             "author": "Amer Deep Soni",
-            "role": "Civil Engineer",
+            "role": "Full Stack Web Developer",
             "avatarUrl": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=200&auto=format&fit=crop"
         }
     ]

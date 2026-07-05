@@ -8,6 +8,7 @@ import { Skills } from './components/Layout/Skills';
 import { Experience } from './components/Layout/Experience';
 import { Projects } from './components/Layout/Projects';
 import { Testimonials } from './components/Layout/Testimonials';
+import { Location } from './components/Layout/Location';
 import { Contact } from './components/Layout/Contact';
 import { Footer } from './components/Layout/Footer';
 
@@ -66,6 +67,7 @@ const App: React.FC = () => {
                 <Experience profile={data} />
                 <Projects profile={data} />
                 <Testimonials profile={data} />
+                <Location />
                 <Contact profile={data} />
             </main>
 

@@ -127,7 +127,9 @@
             ],
             "githubUrl": "https://github.com/9800hariom/MyShop",
             "liveUrl": "https://YOUR-LIVE-DEMO-LINK.com",
-            "imageUrl": "myimage.png"
+            "imageUrl": "public/myimage.png"
+            
+            
         }
     ],
     "experience": [

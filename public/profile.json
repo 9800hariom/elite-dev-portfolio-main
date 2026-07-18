@@ -127,7 +127,7 @@
             ],
             "githubUrl": "https://github.com/9800hariom/MyShop",
             "liveUrl": "https://YOUR-LIVE-DEMO-LINK.com",
-            "imageUrl": "public/myShop.png"
+            "imageUrl": "/myShop.png"
             
         },
         {
@@ -161,7 +161,7 @@
             ],
             "githubUrl": "https://github.com/9800hariom/smart-janakpur-waste-management-",
             "liveUrl": "https://smart-janakpur-waste-management.vercel.app/",
-            "imageUrl": "public/Smartjanakpur.png"
+            "imageUrl": "/Smartjanakpur.png"
         }
 
     ],

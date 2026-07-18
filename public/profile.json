@@ -127,10 +127,43 @@
             ],
             "githubUrl": "https://github.com/9800hariom/MyShop",
             "liveUrl": "https://YOUR-LIVE-DEMO-LINK.com",
-            "imageUrl": "/images/myimage.png"
+            "imageUrl": "public/myShop.png"
             
-            
+        },
+        {
+            "title": "Smart Janakpur - AI Powered Waste Management System",
+            "description": "An AI-powered smart waste management platform that enables citizens to report waste, verifies reports using AI image recognition, rewards eco-friendly actions, and helps collectors efficiently manage waste collection through a modern dashboard.",
+            "technologies": [
+                "Next.js 14",
+                "React.js",
+                "TypeScript",
+                "Tailwind CSS",
+                "Node.js",
+                "PostgreSQL",
+                "Drizzle ORM",
+                "Google Gemini AI",
+                "Neon Database",
+                "Vercel"
+            ],
+            "features": [
+                "AI Waste Image Verification",
+                "Citizen & Collector Authentication",
+                "Waste Reporting with GPS Location",
+                "Before & After Cleanup Verification",
+                "Reward Points & Leaderboard",
+                "Smart Collector Dashboard",
+                "Real-time Report Tracking",
+                "AI Chatbot Assistant",
+                "Admin Management Panel",
+                "Analytics & Environmental Impact Dashboard",
+                "Duplicate Report Detection",
+                "Mobile Responsive Design"
+            ],
+            "githubUrl": "https://github.com/9800hariom/smart-janakpur-waste-management-",
+            "liveUrl": "https://smart-janakpur-waste-management.vercel.app/",
+            "imageUrl": "public/Smartjanakpur.png"
         }
+
     ],
     "experience": [
         {

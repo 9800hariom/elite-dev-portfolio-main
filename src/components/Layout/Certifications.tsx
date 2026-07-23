@@ -75,6 +75,38 @@ const CERTIFICATES: Certificate[] = [
         trainingMode: 'Offline',
         trainingHours: 120
     },
+
+    {
+        id: 2,
+        title: 'JCC Web Development 7-Day Bootcamp Certificate',
+        organization: 'Janakpur Community College',
+        issueDate: 'Ashar 2081 (June/July 2024)',
+        credentialId: 'N/A',
+        skills: [
+            'HTML',
+            'CSS',
+            'JavaScript',
+            'Git',
+            'GitHub',
+            'Vercel',
+            'Responsive Web Design',
+            'Portfolio Development',
+            'Frontend Development',
+            'Version Control',
+            'Deployment',
+            'Team Collaboration'
+        ],
+        description: 'Successfully participated in the JCC Web Development 7-Day Bootcamp organized by Janakpur Community College from 14 Ashar to 20 Ashar. Completed intensive hands-on training covering HTML, CSS, JavaScript, Git, GitHub, Vercel deployment, and portfolio website development while demonstrating dedication, enthusiasm, and commitment to learning modern web development.',
+        category: 'Web Development',
+        status: 'Completed',
+        imageUrl: 'jcc-webdev-bootcamp.jpg',
+        instructor: 'Mr. Amardeep Soni',
+        duration: '7 Days',
+        trainingMode: 'Offline',
+        trainingHours: 42
+    },
+
+
     {
         id: 2,
         title: 'Elevating Ideation Through Co-creation Workshop',

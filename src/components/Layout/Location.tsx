@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Globe, Building2, Navigation, ExternalLink, Flag, Map } from 'lucide-react';
+import { LocationSimulator } from './LocationSimulator';
 
 /* ─── Types ─── */
 interface LocationDetail {
@@ -232,6 +233,9 @@ export const Location = () => {
                         </div>
                     </div>
                 </motion.div>
+
+                {/* ── Interactive Location Matcher Simulator ── */}
+                <LocationSimulator />
             </div>
         </section>
     );
